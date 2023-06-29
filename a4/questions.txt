@@ -1,0 +1,60 @@
+Q1: Review data in "tmdb-5000.zip". You can open .csv files using Microsoft Excel or any text editor.
+
+Which normal form is it in? Justify your answer.
+
+-----------------------------------
+The data in tmdb-5000.zip is unnormalized, as there are columns which contain multiple values, such as the 'spoken_languages' column in tmdb_5000_movies.
+-----------------------------------
+
+Q2: Consider "tmdb_5000_movies.csv", and suppose that it only had two columns: id and genres. Assume that there are no other columns or tables.
+
+How can you restructure such data so that it is in the 3NF? Justify your answer.
+
+-----------------------------------
+To restructure the data such that it is in the 3NF, we must split the data into 2 separate tables. The first table will have the headers 'id' and 'genre_id', while the second one will have 'genre_id' and 'genre'. This satisfies 1NF since each column only has 1 value, 2NF since every non-candidate key attribute depends on the whole candidate key, and 3NF since there are no transitive functional dependencies.
+
+Example:
+
+Table 1
+|--------------------|
+|id      | genre_id  |
+|--------+-----------|
+|19995   | 28        |
+|19995   | 12        |
+|19995   | 14        |
+|19995   | 878       |
+|285     | 12        |
+|285     | 14        |
+|285     | 28        |
+|--------------------|
+
+Table 2
+|--------------------------|
+|genre_id| genre           |
+|--------+-----------------|
+|28      | Action          |
+|12      | Adventure       |
+|14      | Fantasy         |
+|878     | Science Fiction |
+|--------------------------|
+
+-----------------------------------
+
+Q3: Review data in "movies.nt". You can use any text editor to open this file. You don't have to use Python scripts for this question. You can just use search in a text editor.
+
+List all genre names (e.g., Action, Comedy, etc.) for movie represented with blank node _:m_99861.
+
+-----------------------------------
+Action, Adventure, Science Fiction
+-----------------------------------
+
+Q4: Consider the following sentence: "Canberra is a capital of Australia" (you knew that, right?). Encode this information in N-Triples format. Appropriately use blank nodes, URIs and string literals. Note that the sentence has some implied information that also needs to be included (e.g., what is Australia).
+
+You can use "movies.nt" as a reference. Paste your answer here, rather rather than creating a new .nt file.
+
+-----------------------------------
+_:c_61 <http://adelaide.edu.au/dbed/hasName> "Australia" .
+_:c_61 <http://adelaide.edu.au/dbed/hasCity> _:t_2600 .
+_:t_2600 <http://adelaide.edu.au/dbed/hasName> "Canberra" .
+_:t_2600 <http://adelaide.edu.au/dbed/hasTitle> "Capital" .
+-----------------------------------
